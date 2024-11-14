@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content%}
+<main class="container mt-3 mb-5">
+	{% for news in posts %}
+	<div class="card mb-4 shadow">
+	  <div class="row no-gutters">
+	    <div class="col-md-3">
+	      <img src="/media/{{post.image}}" class="card-img" alt="{{post.title}}">
+	    </div>
+	    <div class="col-md-8">
+	      <div class="card-body">
+	        <h5 class="card-title">{{post.title}}</h5>
+	        <p class="card-text">{{post.detail}}</p>
+	        <p class="card-text"><a href="/home/{{post.id}}" class="btn btn-sm btn-primary">Read Full</a></p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+{% endfor %}
+</main>
+{% endblock%}
