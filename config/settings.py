@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_URL = '/static/'
 STATIC_ROOT = ''
-STATICFILES_DIRS = ('static',)
+STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -30,9 +30,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = 'django-insecure-xx_0wy7e63l@aw0n**g&_r4y!yrasusbv32=8awzoc45-pe*15'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'BlogPost',
+    'registration',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_REDIRECT_URL = 'home'
