@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block content %}
+{% block content%}
 <main class="container mt-3 mb-5">
 	<!-- featured news -->
 	<div class="row my-3">
@@ -13,7 +13,24 @@
 			    <p class="card-text">{{post.text}}</p>
 			  </div>
 			</div>
-        </div>
-    </div>
+			<li><a href="{% url 'edit_post' post.pk %}"> Edit qilish </a></li>
+			<li><a href="{% url 'delete_post' post.pk %}"> Delete </a></li>
+		</div>
+		<div class="col-md-4">
+			<h3 class="mb-3 border-bottom pb-1">From this Category</h3>
+			<!-- Category Box -->
+            {% for post in posts %}
+			<div class="card mb-3 shadow">
+			    <img src="/media/{{post.image}}" class="card-img-top" alt="{{post.title}}">
+			  <div class="card-body">
+			    <h5 class="card-title">{{post.title}}</h5>
+			    <hr/>
+			    <p class="card-text"><a href="/detail/{{post.id}}" class="btn btn-sm btn-primary">Read Full</a></p>
+			  </div>
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+
 </main>
 {% endblock%}

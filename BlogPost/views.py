@@ -1,7 +1,8 @@
 from lib2to3.fixes.fix_input import context
 
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView
 from unicodedata import category
 
 from .models import BlogPost, Category, Region
@@ -67,4 +68,18 @@ def region(request, id):
     return render(request, 'region_detail.html', {'posts': posts,'region': region})
 
 
+class Create_post(CreateView):
+    model = BlogPost
+    template_name = 'create-post.html'
+    fields = ['category', 'region', 'title', 'text', 'image', 'author']
 
+
+class Edit_post(UpdateView):
+    model = BlogPost
+    template_name = 'edit-post.html'
+    fields = ['category', 'region', 'title', 'text']
+
+class Delete_post(DeleteView):
+    model = BlogPost
+    template_name = 'delete-post.html'
+    success_url = reverse_lazy('home')
